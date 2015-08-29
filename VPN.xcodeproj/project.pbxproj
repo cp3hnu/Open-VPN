@@ -1,0 +1,1051 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9508E0871B292C6600E572D6 /* VPN.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508E0821B292C6600E572D6 /* VPN.m */; };
+		9508E0881B292C6600E572D6 /* VPN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9508E0831B292C6600E572D6 /* VPN.xcdatamodeld */; };
+		9508E0891B292C6600E572D6 /* VPNDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508E0861B292C6600E572D6 /* VPNDataManager.m */; };
+		952070E51B2E62DD0025BAB5 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952070E41B2E62DD0025BAB5 /* NotificationCenter.framework */; };
+		952070EB1B2E62DD0025BAB5 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952070EA1B2E62DD0025BAB5 /* TodayViewController.m */; };
+		952070F01B2E62DD0025BAB5 /* VPN Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 952070E21B2E62DD0025BAB5 /* VPN Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		952070F51B2E63230025BAB5 /* VPNKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C8BE8E1B214AB600CE6430 /* VPNKit.framework */; };
+		952070F61B2E65A90025BAB5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C8BE871B21494F00CE6430 /* NetworkExtension.framework */; };
+		952A37181B2A73E9002BE10C /* SwitchTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 952A37171B2A73E9002BE10C /* SwitchTableCell.m */; };
+		952A371B1B2A745A002BE10C /* SubtitleTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 952A371A1B2A745A002BE10C /* SubtitleTableCell.m */; };
+		953606541B25A8AA0017358F /* UIColor+String.h in Headers */ = {isa = PBXBuildFile; fileRef = 953606521B25A8AA0017358F /* UIColor+String.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		953606551B25A8AA0017358F /* UIColor+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 953606531B25A8AA0017358F /* UIColor+String.m */; };
+		9558BCF41B26C2FD0018A35A /* VPNManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9558BCF21B26C2FD0018A35A /* VPNManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9558BCF51B26C2FD0018A35A /* VPNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9558BCF31B26C2FD0018A35A /* VPNManager.m */; };
+		9558BCF81B26D2130018A35A /* VPNKeyChainWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9558BCF61B26D2130018A35A /* VPNKeyChainWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9558BCF91B26D2130018A35A /* VPNKeyChainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9558BCF71B26D2130018A35A /* VPNKeyChainWrapper.m */; };
+		955BF6161B1FEC9500C1F5CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 955BF6151B1FEC9500C1F5CD /* main.m */; };
+		955BF6191B1FEC9500C1F5CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 955BF6181B1FEC9500C1F5CD /* AppDelegate.m */; };
+		955BF6241B1FEC9500C1F5CD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 955BF6221B1FEC9500C1F5CD /* LaunchScreen.xib */; };
+		955BF6301B1FEC9600C1F5CD /* VPNTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 955BF62F1B1FEC9600C1F5CD /* VPNTests.m */; };
+		9563E7231B30229F0053AFED /* VPN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9508E0831B292C6600E572D6 /* VPN.xcdatamodeld */; };
+		9563E7251B3022A40053AFED /* VPN.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508E0821B292C6600E572D6 /* VPN.m */; };
+		9563E7261B3022A80053AFED /* VPN+OnDemandRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A690671B2A8A7A00BE7257 /* VPN+OnDemandRules.m */; };
+		9563E7271B3022AB0053AFED /* VPNDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508E0861B292C6600E572D6 /* VPNDataManager.m */; };
+		95A690681B2A8A7A00BE7257 /* VPN+OnDemandRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A690671B2A8A7A00BE7257 /* VPN+OnDemandRules.m */; };
+		95C8BE801B213D1A00CE6430 /* VPNDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C8BE7F1B213D1A00CE6430 /* VPNDetailViewController.m */; };
+		95C8BE831B213D2D00CE6430 /* VPNListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C8BE821B213D2D00CE6430 /* VPNListViewController.m */; };
+		95C8BE881B21494F00CE6430 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C8BE871B21494F00CE6430 /* NetworkExtension.framework */; };
+		95C8BE931B214AB600CE6430 /* VPNKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 95C8BE921B214AB600CE6430 /* VPNKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		95C8BE991B214AB600CE6430 /* VPNKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C8BE8E1B214AB600CE6430 /* VPNKit.framework */; };
+		95C8BEA21B214AB600CE6430 /* VPNKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C8BEA11B214AB600CE6430 /* VPNKitTests.m */; };
+		95C8BEA51B214AB600CE6430 /* VPNKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C8BE8E1B214AB600CE6430 /* VPNKit.framework */; };
+		95C8BEA61B214AB600CE6430 /* VPNKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 95C8BE8E1B214AB600CE6430 /* VPNKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		95C8BEAE1B214AEA00CE6430 /* UICKeyChainStore+PersistentRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C8BE851B213DB000CE6430 /* UICKeyChainStore+PersistentRef.m */; };
+		95C8BEAF1B214AED00CE6430 /* UICKeyChainStore+PersistentRef.h in Headers */ = {isa = PBXBuildFile; fileRef = 95C8BE841B213DB000CE6430 /* UICKeyChainStore+PersistentRef.h */; };
+		95C8BEB41B214E8300CE6430 /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 95C8BEB21B214E8300CE6430 /* UICKeyChainStore.h */; };
+		95C8BEB51B214E8300CE6430 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C8BEB31B214E8300CE6430 /* UICKeyChainStore.m */; };
+		95FF538E1B329DF400068915 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 955BF6201B1FEC9500C1F5CD /* Images.xcassets */; };
+		95FF53901B329E1700068915 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95FF538F1B329E1700068915 /* Images.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		952070EE1B2E62DD0025BAB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 955BF6081B1FEC9500C1F5CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 952070E11B2E62DD0025BAB5;
+			remoteInfo = "VPN Widget";
+		};
+		955BF62A1B1FEC9600C1F5CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 955BF6081B1FEC9500C1F5CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 955BF60F1B1FEC9500C1F5CD;
+			remoteInfo = VPN;
+		};
+		95C8BE9A1B214AB600CE6430 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 955BF6081B1FEC9500C1F5CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95C8BE8D1B214AB600CE6430;
+			remoteInfo = VPNKit;
+		};
+		95C8BE9C1B214AB600CE6430 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 955BF6081B1FEC9500C1F5CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 955BF60F1B1FEC9500C1F5CD;
+			remoteInfo = VPN;
+		};
+		95C8BEA31B214AB600CE6430 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 955BF6081B1FEC9500C1F5CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95C8BE8D1B214AB600CE6430;
+			remoteInfo = VPNKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		952070F41B2E62DD0025BAB5 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				952070F01B2E62DD0025BAB5 /* VPN Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C8BEAA1B214AB700CE6430 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				95C8BEA61B214AB600CE6430 /* VPNKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9508E07E1B292C0800E572D6 /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		9508E0811B292C6600E572D6 /* VPN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPN.h; sourceTree = "<group>"; };
+		9508E0821B292C6600E572D6 /* VPN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPN.m; sourceTree = "<group>"; };
+		9508E0841B292C6600E572D6 /* VPN.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VPN.xcdatamodel; sourceTree = "<group>"; };
+		9508E0851B292C6600E572D6 /* VPNDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNDataManager.h; sourceTree = "<group>"; };
+		9508E0861B292C6600E572D6 /* VPNDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNDataManager.m; sourceTree = "<group>"; };
+		952070E21B2E62DD0025BAB5 /* VPN Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "VPN Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		952070E41B2E62DD0025BAB5 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		952070E81B2E62DD0025BAB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		952070E91B2E62DD0025BAB5 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		952070EA1B2E62DD0025BAB5 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		952070F71B2E65A90025BAB5 /* VPN Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "VPN Widget.entitlements"; sourceTree = "<group>"; };
+		952A37161B2A73E9002BE10C /* SwitchTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchTableCell.h; sourceTree = "<group>"; };
+		952A37171B2A73E9002BE10C /* SwitchTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchTableCell.m; sourceTree = "<group>"; };
+		952A37191B2A745A002BE10C /* SubtitleTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtitleTableCell.h; sourceTree = "<group>"; };
+		952A371A1B2A745A002BE10C /* SubtitleTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtitleTableCell.m; sourceTree = "<group>"; };
+		953606521B25A8AA0017358F /* UIColor+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+String.h"; sourceTree = "<group>"; };
+		953606531B25A8AA0017358F /* UIColor+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+String.m"; sourceTree = "<group>"; };
+		9558BCF21B26C2FD0018A35A /* VPNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNManager.h; sourceTree = "<group>"; };
+		9558BCF31B26C2FD0018A35A /* VPNManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNManager.m; sourceTree = "<group>"; };
+		9558BCF61B26D2130018A35A /* VPNKeyChainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNKeyChainWrapper.h; sourceTree = "<group>"; };
+		9558BCF71B26D2130018A35A /* VPNKeyChainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNKeyChainWrapper.m; sourceTree = "<group>"; };
+		955BF6101B1FEC9500C1F5CD /* VPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		955BF6141B1FEC9500C1F5CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		955BF6151B1FEC9500C1F5CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		955BF6171B1FEC9500C1F5CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		955BF6181B1FEC9500C1F5CD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		955BF6201B1FEC9500C1F5CD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		955BF6231B1FEC9500C1F5CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		955BF6291B1FEC9600C1F5CD /* VPNTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VPNTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		955BF62E1B1FEC9600C1F5CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		955BF62F1B1FEC9600C1F5CD /* VPNTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPNTests.m; sourceTree = "<group>"; };
+		95A690661B2A8A7A00BE7257 /* VPN+OnDemandRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VPN+OnDemandRules.h"; sourceTree = "<group>"; };
+		95A690671B2A8A7A00BE7257 /* VPN+OnDemandRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VPN+OnDemandRules.m"; sourceTree = "<group>"; };
+		95C8BE441B21346F00CE6430 /* VPN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VPN.entitlements; sourceTree = "<group>"; };
+		95C8BE7E1B213D1A00CE6430 /* VPNDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNDetailViewController.h; sourceTree = "<group>"; };
+		95C8BE7F1B213D1A00CE6430 /* VPNDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNDetailViewController.m; sourceTree = "<group>"; };
+		95C8BE811B213D2D00CE6430 /* VPNListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNListViewController.h; sourceTree = "<group>"; };
+		95C8BE821B213D2D00CE6430 /* VPNListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPNListViewController.m; sourceTree = "<group>"; };
+		95C8BE841B213DB000CE6430 /* UICKeyChainStore+PersistentRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UICKeyChainStore+PersistentRef.h"; path = "../VPN/UICKeyChainStore+PersistentRef.h"; sourceTree = "<group>"; };
+		95C8BE851B213DB000CE6430 /* UICKeyChainStore+PersistentRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UICKeyChainStore+PersistentRef.m"; path = "../VPN/UICKeyChainStore+PersistentRef.m"; sourceTree = "<group>"; };
+		95C8BE871B21494F00CE6430 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		95C8BE8E1B214AB600CE6430 /* VPNKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VPNKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95C8BE911B214AB600CE6430 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95C8BE921B214AB600CE6430 /* VPNKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPNKit.h; sourceTree = "<group>"; };
+		95C8BE981B214AB600CE6430 /* VPNKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VPNKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		95C8BEA01B214AB600CE6430 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95C8BEA11B214AB600CE6430 /* VPNKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPNKitTests.m; sourceTree = "<group>"; };
+		95C8BEB21B214E8300CE6430 /* UICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICKeyChainStore.h; sourceTree = "<group>"; };
+		95C8BEB31B214E8300CE6430 /* UICKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICKeyChainStore.m; sourceTree = "<group>"; };
+		95FF538F1B329E1700068915 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		952070DF1B2E62DD0025BAB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				952070F51B2E63230025BAB5 /* VPNKit.framework in Frameworks */,
+				952070F61B2E65A90025BAB5 /* NetworkExtension.framework in Frameworks */,
+				952070E51B2E62DD0025BAB5 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		955BF60D1B1FEC9500C1F5CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95C8BEA51B214AB600CE6430 /* VPNKit.framework in Frameworks */,
+				95C8BE881B21494F00CE6430 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		955BF6261B1FEC9600C1F5CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C8BE8A1B214AB600CE6430 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C8BE951B214AB600CE6430 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95C8BE991B214AB600CE6430 /* VPNKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9508E0801B292C6600E572D6 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9508E0831B292C6600E572D6 /* VPN.xcdatamodeld */,
+				9508E0811B292C6600E572D6 /* VPN.h */,
+				9508E0821B292C6600E572D6 /* VPN.m */,
+				95A690661B2A8A7A00BE7257 /* VPN+OnDemandRules.h */,
+				95A690671B2A8A7A00BE7257 /* VPN+OnDemandRules.m */,
+				9508E0851B292C6600E572D6 /* VPNDataManager.h */,
+				9508E0861B292C6600E572D6 /* VPNDataManager.m */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		952070E31B2E62DD0025BAB5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				952070E41B2E62DD0025BAB5 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		952070E61B2E62DD0025BAB5 /* VPN Widget */ = {
+			isa = PBXGroup;
+			children = (
+				952070F71B2E65A90025BAB5 /* VPN Widget.entitlements */,
+				952070E91B2E62DD0025BAB5 /* TodayViewController.h */,
+				952070EA1B2E62DD0025BAB5 /* TodayViewController.m */,
+				95FF538F1B329E1700068915 /* Images.xcassets */,
+				952070E71B2E62DD0025BAB5 /* Supporting Files */,
+			);
+			path = "VPN Widget";
+			sourceTree = "<group>";
+		};
+		952070E71B2E62DD0025BAB5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				952070E81B2E62DD0025BAB5 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		955BF6071B1FEC9500C1F5CD = {
+			isa = PBXGroup;
+			children = (
+				95C8BE871B21494F00CE6430 /* NetworkExtension.framework */,
+				9508E0801B292C6600E572D6 /* CoreData */,
+				955BF6121B1FEC9500C1F5CD /* VPN */,
+				955BF62C1B1FEC9600C1F5CD /* VPNTests */,
+				95C8BE8F1B214AB600CE6430 /* VPNKit */,
+				95C8BE9E1B214AB600CE6430 /* VPNKitTests */,
+				952070E61B2E62DD0025BAB5 /* VPN Widget */,
+				952070E31B2E62DD0025BAB5 /* Frameworks */,
+				955BF6111B1FEC9500C1F5CD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		955BF6111B1FEC9500C1F5CD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				955BF6101B1FEC9500C1F5CD /* VPN.app */,
+				955BF6291B1FEC9600C1F5CD /* VPNTests.xctest */,
+				95C8BE8E1B214AB600CE6430 /* VPNKit.framework */,
+				95C8BE981B214AB600CE6430 /* VPNKitTests.xctest */,
+				952070E21B2E62DD0025BAB5 /* VPN Widget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		955BF6121B1FEC9500C1F5CD /* VPN */ = {
+			isa = PBXGroup;
+			children = (
+				95C8BE441B21346F00CE6430 /* VPN.entitlements */,
+				9508E07E1B292C0800E572D6 /* Define.h */,
+				955BF6171B1FEC9500C1F5CD /* AppDelegate.h */,
+				955BF6181B1FEC9500C1F5CD /* AppDelegate.m */,
+				952A37161B2A73E9002BE10C /* SwitchTableCell.h */,
+				952A37171B2A73E9002BE10C /* SwitchTableCell.m */,
+				952A37191B2A745A002BE10C /* SubtitleTableCell.h */,
+				952A371A1B2A745A002BE10C /* SubtitleTableCell.m */,
+				95C8BE811B213D2D00CE6430 /* VPNListViewController.h */,
+				95C8BE821B213D2D00CE6430 /* VPNListViewController.m */,
+				95C8BE7E1B213D1A00CE6430 /* VPNDetailViewController.h */,
+				95C8BE7F1B213D1A00CE6430 /* VPNDetailViewController.m */,
+				955BF6201B1FEC9500C1F5CD /* Images.xcassets */,
+				955BF6221B1FEC9500C1F5CD /* LaunchScreen.xib */,
+				955BF6131B1FEC9500C1F5CD /* Supporting Files */,
+			);
+			path = VPN;
+			sourceTree = "<group>";
+		};
+		955BF6131B1FEC9500C1F5CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				955BF6141B1FEC9500C1F5CD /* Info.plist */,
+				955BF6151B1FEC9500C1F5CD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		955BF62C1B1FEC9600C1F5CD /* VPNTests */ = {
+			isa = PBXGroup;
+			children = (
+				955BF62F1B1FEC9600C1F5CD /* VPNTests.m */,
+				955BF62D1B1FEC9600C1F5CD /* Supporting Files */,
+			);
+			path = VPNTests;
+			sourceTree = "<group>";
+		};
+		955BF62D1B1FEC9600C1F5CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				955BF62E1B1FEC9600C1F5CD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		95C8BE8F1B214AB600CE6430 /* VPNKit */ = {
+			isa = PBXGroup;
+			children = (
+				95C8BE921B214AB600CE6430 /* VPNKit.h */,
+				9558BCF21B26C2FD0018A35A /* VPNManager.h */,
+				9558BCF31B26C2FD0018A35A /* VPNManager.m */,
+				953606521B25A8AA0017358F /* UIColor+String.h */,
+				953606531B25A8AA0017358F /* UIColor+String.m */,
+				9558BCF61B26D2130018A35A /* VPNKeyChainWrapper.h */,
+				9558BCF71B26D2130018A35A /* VPNKeyChainWrapper.m */,
+				95C8BE841B213DB000CE6430 /* UICKeyChainStore+PersistentRef.h */,
+				95C8BE851B213DB000CE6430 /* UICKeyChainStore+PersistentRef.m */,
+				95C8BEB01B214E8300CE6430 /* Library */,
+				95C8BE901B214AB600CE6430 /* Supporting Files */,
+			);
+			path = VPNKit;
+			sourceTree = "<group>";
+		};
+		95C8BE901B214AB600CE6430 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				95C8BE911B214AB600CE6430 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		95C8BE9E1B214AB600CE6430 /* VPNKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				95C8BEA11B214AB600CE6430 /* VPNKitTests.m */,
+				95C8BE9F1B214AB600CE6430 /* Supporting Files */,
+			);
+			path = VPNKitTests;
+			sourceTree = "<group>";
+		};
+		95C8BE9F1B214AB600CE6430 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				95C8BEA01B214AB600CE6430 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		95C8BEB01B214E8300CE6430 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				95C8BEB11B214E8300CE6430 /* UICKeyChainStore */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		95C8BEB11B214E8300CE6430 /* UICKeyChainStore */ = {
+			isa = PBXGroup;
+			children = (
+				95C8BEB21B214E8300CE6430 /* UICKeyChainStore.h */,
+				95C8BEB31B214E8300CE6430 /* UICKeyChainStore.m */,
+			);
+			path = UICKeyChainStore;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		95C8BE8B1B214AB600CE6430 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95C8BEAF1B214AED00CE6430 /* UICKeyChainStore+PersistentRef.h in Headers */,
+				95C8BEB41B214E8300CE6430 /* UICKeyChainStore.h in Headers */,
+				9558BCF81B26D2130018A35A /* VPNKeyChainWrapper.h in Headers */,
+				953606541B25A8AA0017358F /* UIColor+String.h in Headers */,
+				9558BCF41B26C2FD0018A35A /* VPNManager.h in Headers */,
+				95C8BE931B214AB600CE6430 /* VPNKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		952070E11B2E62DD0025BAB5 /* VPN Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 952070F31B2E62DD0025BAB5 /* Build configuration list for PBXNativeTarget "VPN Widget" */;
+			buildPhases = (
+				952070DE1B2E62DD0025BAB5 /* Sources */,
+				952070DF1B2E62DD0025BAB5 /* Frameworks */,
+				952070E01B2E62DD0025BAB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VPN Widget";
+			productName = "VPN Widget";
+			productReference = 952070E21B2E62DD0025BAB5 /* VPN Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		955BF60F1B1FEC9500C1F5CD /* VPN */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 955BF6331B1FEC9600C1F5CD /* Build configuration list for PBXNativeTarget "VPN" */;
+			buildPhases = (
+				955BF60C1B1FEC9500C1F5CD /* Sources */,
+				955BF60D1B1FEC9500C1F5CD /* Frameworks */,
+				955BF60E1B1FEC9500C1F5CD /* Resources */,
+				95C8BEAA1B214AB700CE6430 /* Embed Frameworks */,
+				952070F41B2E62DD0025BAB5 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95C8BEA41B214AB600CE6430 /* PBXTargetDependency */,
+				952070EF1B2E62DD0025BAB5 /* PBXTargetDependency */,
+			);
+			name = VPN;
+			productName = VPN;
+			productReference = 955BF6101B1FEC9500C1F5CD /* VPN.app */;
+			productType = "com.apple.product-type.application";
+		};
+		955BF6281B1FEC9600C1F5CD /* VPNTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 955BF6361B1FEC9600C1F5CD /* Build configuration list for PBXNativeTarget "VPNTests" */;
+			buildPhases = (
+				955BF6251B1FEC9600C1F5CD /* Sources */,
+				955BF6261B1FEC9600C1F5CD /* Frameworks */,
+				955BF6271B1FEC9600C1F5CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				955BF62B1B1FEC9600C1F5CD /* PBXTargetDependency */,
+			);
+			name = VPNTests;
+			productName = VPNTests;
+			productReference = 955BF6291B1FEC9600C1F5CD /* VPNTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		95C8BE8D1B214AB600CE6430 /* VPNKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95C8BEA71B214AB700CE6430 /* Build configuration list for PBXNativeTarget "VPNKit" */;
+			buildPhases = (
+				95C8BE891B214AB600CE6430 /* Sources */,
+				95C8BE8A1B214AB600CE6430 /* Frameworks */,
+				95C8BE8B1B214AB600CE6430 /* Headers */,
+				95C8BE8C1B214AB600CE6430 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VPNKit;
+			productName = VPNKit;
+			productReference = 95C8BE8E1B214AB600CE6430 /* VPNKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		95C8BE971B214AB600CE6430 /* VPNKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95C8BEAB1B214AB700CE6430 /* Build configuration list for PBXNativeTarget "VPNKitTests" */;
+			buildPhases = (
+				95C8BE941B214AB600CE6430 /* Sources */,
+				95C8BE951B214AB600CE6430 /* Frameworks */,
+				95C8BE961B214AB600CE6430 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95C8BE9B1B214AB600CE6430 /* PBXTargetDependency */,
+				95C8BE9D1B214AB600CE6430 /* PBXTargetDependency */,
+			);
+			name = VPNKitTests;
+			productName = VPNKitTests;
+			productReference = 95C8BE981B214AB600CE6430 /* VPNKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		955BF6081B1FEC9500C1F5CD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = csdept;
+				TargetAttributes = {
+					952070E11B2E62DD0025BAB5 = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 5M6234DYMA;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.VPNLite = {
+								enabled = 1;
+							};
+						};
+					};
+					955BF60F1B1FEC9500C1F5CD = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 5M6234DYMA;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.VPNLite = {
+								enabled = 1;
+							};
+						};
+					};
+					955BF6281B1FEC9600C1F5CD = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 955BF60F1B1FEC9500C1F5CD;
+					};
+					95C8BE8D1B214AB600CE6430 = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 5M6234DYMA;
+					};
+					95C8BE971B214AB600CE6430 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 955BF60F1B1FEC9500C1F5CD;
+					};
+				};
+			};
+			buildConfigurationList = 955BF60B1B1FEC9500C1F5CD /* Build configuration list for PBXProject "VPN" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 955BF6071B1FEC9500C1F5CD;
+			productRefGroup = 955BF6111B1FEC9500C1F5CD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				955BF60F1B1FEC9500C1F5CD /* VPN */,
+				955BF6281B1FEC9600C1F5CD /* VPNTests */,
+				95C8BE8D1B214AB600CE6430 /* VPNKit */,
+				95C8BE971B214AB600CE6430 /* VPNKitTests */,
+				952070E11B2E62DD0025BAB5 /* VPN Widget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		952070E01B2E62DD0025BAB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95FF53901B329E1700068915 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		955BF60E1B1FEC9500C1F5CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				955BF6241B1FEC9500C1F5CD /* LaunchScreen.xib in Resources */,
+				95FF538E1B329DF400068915 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		955BF6271B1FEC9600C1F5CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C8BE8C1B214AB600CE6430 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C8BE961B214AB600CE6430 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		952070DE1B2E62DD0025BAB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9563E7251B3022A40053AFED /* VPN.m in Sources */,
+				9563E7271B3022AB0053AFED /* VPNDataManager.m in Sources */,
+				9563E7231B30229F0053AFED /* VPN.xcdatamodeld in Sources */,
+				9563E7261B3022A80053AFED /* VPN+OnDemandRules.m in Sources */,
+				952070EB1B2E62DD0025BAB5 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		955BF60C1B1FEC9500C1F5CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				955BF6191B1FEC9500C1F5CD /* AppDelegate.m in Sources */,
+				952A371B1B2A745A002BE10C /* SubtitleTableCell.m in Sources */,
+				955BF6161B1FEC9500C1F5CD /* main.m in Sources */,
+				9508E0881B292C6600E572D6 /* VPN.xcdatamodeld in Sources */,
+				9508E0871B292C6600E572D6 /* VPN.m in Sources */,
+				95C8BE831B213D2D00CE6430 /* VPNListViewController.m in Sources */,
+				95C8BE801B213D1A00CE6430 /* VPNDetailViewController.m in Sources */,
+				952A37181B2A73E9002BE10C /* SwitchTableCell.m in Sources */,
+				95A690681B2A8A7A00BE7257 /* VPN+OnDemandRules.m in Sources */,
+				9508E0891B292C6600E572D6 /* VPNDataManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		955BF6251B1FEC9600C1F5CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				955BF6301B1FEC9600C1F5CD /* VPNTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C8BE891B214AB600CE6430 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9558BCF91B26D2130018A35A /* VPNKeyChainWrapper.m in Sources */,
+				9558BCF51B26C2FD0018A35A /* VPNManager.m in Sources */,
+				95C8BEAE1B214AEA00CE6430 /* UICKeyChainStore+PersistentRef.m in Sources */,
+				95C8BEB51B214E8300CE6430 /* UICKeyChainStore.m in Sources */,
+				953606551B25A8AA0017358F /* UIColor+String.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C8BE941B214AB600CE6430 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95C8BEA21B214AB600CE6430 /* VPNKitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		952070EF1B2E62DD0025BAB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 952070E11B2E62DD0025BAB5 /* VPN Widget */;
+			targetProxy = 952070EE1B2E62DD0025BAB5 /* PBXContainerItemProxy */;
+		};
+		955BF62B1B1FEC9600C1F5CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 955BF60F1B1FEC9500C1F5CD /* VPN */;
+			targetProxy = 955BF62A1B1FEC9600C1F5CD /* PBXContainerItemProxy */;
+		};
+		95C8BE9B1B214AB600CE6430 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95C8BE8D1B214AB600CE6430 /* VPNKit */;
+			targetProxy = 95C8BE9A1B214AB600CE6430 /* PBXContainerItemProxy */;
+		};
+		95C8BE9D1B214AB600CE6430 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 955BF60F1B1FEC9500C1F5CD /* VPN */;
+			targetProxy = 95C8BE9C1B214AB600CE6430 /* PBXContainerItemProxy */;
+		};
+		95C8BEA41B214AB600CE6430 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95C8BE8D1B214AB600CE6430 /* VPNKit */;
+			targetProxy = 95C8BEA31B214AB600CE6430 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		955BF6221B1FEC9500C1F5CD /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				955BF6231B1FEC9500C1F5CD /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		952070F11B2E62DD0025BAB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "VPN Widget/VPN Widget.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "VPN Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		952070F21B2E62DD0025BAB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "VPN Widget/VPN Widget.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "VPN Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		955BF6311B1FEC9600C1F5CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		955BF6321B1FEC9600C1F5CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		955BF6341B1FEC9600C1F5CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = VPN/VPN.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = VPN/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		955BF6351B1FEC9600C1F5CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = VPN/VPN.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = VPN/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		955BF6371B1FEC9600C1F5CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VPNTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VPN.app/VPN";
+			};
+			name = Debug;
+		};
+		955BF6381B1FEC9600C1F5CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VPNTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VPN.app/VPN";
+			};
+			name = Release;
+		};
+		95C8BEA81B214AB700CE6430 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VPNKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		95C8BEA91B214AB700CE6430 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = VPNKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		95C8BEAC1B214AB700CE6430 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VPNKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VPN.app/VPN";
+			};
+			name = Debug;
+		};
+		95C8BEAD1B214AB700CE6430 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VPNKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VPN.app/VPN";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		952070F31B2E62DD0025BAB5 /* Build configuration list for PBXNativeTarget "VPN Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				952070F11B2E62DD0025BAB5 /* Debug */,
+				952070F21B2E62DD0025BAB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		955BF60B1B1FEC9500C1F5CD /* Build configuration list for PBXProject "VPN" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				955BF6311B1FEC9600C1F5CD /* Debug */,
+				955BF6321B1FEC9600C1F5CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		955BF6331B1FEC9600C1F5CD /* Build configuration list for PBXNativeTarget "VPN" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				955BF6341B1FEC9600C1F5CD /* Debug */,
+				955BF6351B1FEC9600C1F5CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		955BF6361B1FEC9600C1F5CD /* Build configuration list for PBXNativeTarget "VPNTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				955BF6371B1FEC9600C1F5CD /* Debug */,
+				955BF6381B1FEC9600C1F5CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95C8BEA71B214AB700CE6430 /* Build configuration list for PBXNativeTarget "VPNKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95C8BEA81B214AB700CE6430 /* Debug */,
+				95C8BEA91B214AB700CE6430 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95C8BEAB1B214AB700CE6430 /* Build configuration list for PBXNativeTarget "VPNKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95C8BEAC1B214AB700CE6430 /* Debug */,
+				95C8BEAD1B214AB700CE6430 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9508E0831B292C6600E572D6 /* VPN.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9508E0841B292C6600E572D6 /* VPN.xcdatamodel */,
+			);
+			currentVersion = 9508E0841B292C6600E572D6 /* VPN.xcdatamodel */;
+			path = VPN.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 955BF6081B1FEC9500C1F5CD /* Project object */;
+}
