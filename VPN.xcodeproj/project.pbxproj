@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3585BBB21B91A38100B6DCCA /* TextFieldTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3585BBB11B91A38100B6DCCA /* TextFieldTableCell.m */; };
 		9508E0871B292C6600E572D6 /* VPN.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508E0821B292C6600E572D6 /* VPN.m */; };
 		9508E0881B292C6600E572D6 /* VPN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9508E0831B292C6600E572D6 /* VPN.xcdatamodeld */; };
 		9508E0891B292C6600E572D6 /* VPNDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508E0861B292C6600E572D6 /* VPNDataManager.m */; };
@@ -112,6 +113,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3585BBB01B91A38100B6DCCA /* TextFieldTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldTableCell.h; sourceTree = "<group>"; };
+		3585BBB11B91A38100B6DCCA /* TextFieldTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldTableCell.m; sourceTree = "<group>"; };
 		9508E07E1B292C0800E572D6 /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		9508E0811B292C6600E572D6 /* VPN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPN.h; sourceTree = "<group>"; };
 		9508E0821B292C6600E572D6 /* VPN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPN.m; sourceTree = "<group>"; };
@@ -210,6 +213,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3585BBAF1B91A2BD00B6DCCA /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				952A37161B2A73E9002BE10C /* SwitchTableCell.h */,
+				952A37171B2A73E9002BE10C /* SwitchTableCell.m */,
+				952A37191B2A745A002BE10C /* SubtitleTableCell.h */,
+				952A371A1B2A745A002BE10C /* SubtitleTableCell.m */,
+				3585BBB01B91A38100B6DCCA /* TextFieldTableCell.h */,
+				3585BBB11B91A38100B6DCCA /* TextFieldTableCell.m */,
+			);
+			name = TableViewCell;
+			sourceTree = "<group>";
+		};
 		9508E0801B292C6600E572D6 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,14 +298,11 @@
 		955BF6121B1FEC9500C1F5CD /* VPN */ = {
 			isa = PBXGroup;
 			children = (
+				3585BBAF1B91A2BD00B6DCCA /* TableViewCell */,
 				95C8BE441B21346F00CE6430 /* VPN.entitlements */,
 				9508E07E1B292C0800E572D6 /* Define.h */,
 				955BF6171B1FEC9500C1F5CD /* AppDelegate.h */,
 				955BF6181B1FEC9500C1F5CD /* AppDelegate.m */,
-				952A37161B2A73E9002BE10C /* SwitchTableCell.h */,
-				952A37171B2A73E9002BE10C /* SwitchTableCell.m */,
-				952A37191B2A745A002BE10C /* SubtitleTableCell.h */,
-				952A371A1B2A745A002BE10C /* SubtitleTableCell.m */,
 				95C8BE811B213D2D00CE6430 /* VPNListViewController.h */,
 				95C8BE821B213D2D00CE6430 /* VPNListViewController.m */,
 				95C8BE7E1B213D1A00CE6430 /* VPNDetailViewController.h */,
@@ -636,6 +649,7 @@
 				952A371B1B2A745A002BE10C /* SubtitleTableCell.m in Sources */,
 				955BF6161B1FEC9500C1F5CD /* main.m in Sources */,
 				9508E0881B292C6600E572D6 /* VPN.xcdatamodeld in Sources */,
+				3585BBB21B91A38100B6DCCA /* TextFieldTableCell.m in Sources */,
 				9508E0871B292C6600E572D6 /* VPN.m in Sources */,
 				95C8BE831B213D2D00CE6430 /* VPNListViewController.m in Sources */,
 				95C8BE801B213D1A00CE6430 /* VPNDetailViewController.m in Sources */,

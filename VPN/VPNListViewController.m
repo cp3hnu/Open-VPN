@@ -63,24 +63,27 @@ static NSString * const kSubtitleTableCellReuseIdentifier = @"subtitleTableCell"
                                              selector:@selector(vpnStatusDidChange:)
                                                  name:NEVPNStatusDidChangeNotification
                                                object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(toggleVPNConnection:)
-                                                 name:kSwitchValueChangedNotification
-                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(toggleVPNConnection:)
+                                                 name:kSwitchValueChangedNotification
+                                               object:nil];
+    
     [self.vpns removeAllObjects];
     [self.vpns addObjectsFromArray:[[VPNDataManager sharedInstance] fetchAllVPNs]];
     [self.tableView reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kSwitchValueChangedNotification object:nil];
 }
 
 - (void)dealloc
@@ -160,11 +163,6 @@ static NSString * const kSubtitleTableCellReuseIdentifier = @"subtitleTableCell"
     [self.tableView reloadData];
 }
 
-- (void)preferredContentSizeChanged:(NSNotification *)notification
-{
-    [self.tableView reloadData];
-}
-
 #pragma mark - TableView Managerment
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -187,7 +185,7 @@ static NSString * const kSubtitleTableCellReuseIdentifier = @"subtitleTableCell"
     {
         SwitchTableCell *cell = (SwitchTableCell *)[tableView dequeueReusableCellWithIdentifier:kSwitchTableCellReuseIdentifier];
         
-        cell.label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        cell.label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
         cell.label.text = self.VPNStatus;
         
         cell.switchCtrl.enabled = (self.vpns.count != 0);
@@ -205,7 +203,7 @@ static NSString * const kSubtitleTableCellReuseIdentifier = @"subtitleTableCell"
         
         VPN *vpn = self.vpns[indexPath.row];
         
-        cell.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        cell.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
         cell.titleLabel.text = vpn.title;
         cell.serverLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2];
         cell.serverLabel.text = vpn.server;

@@ -43,12 +43,20 @@ static NSString * const kKeyChainService = @"com.zte.VPN";
 - (void)setPassword:(NSString *)password forVPNID:(NSString *)vpnID
 {
     NSString *key = [[NSURL URLWithString:vpnID] lastPathComponent];
+    if (!key)
+    {
+        return;
+    }
     [self.keyChain setString:password forKey:key];
 }
 
 - (void)setSecret:(NSString *)secret forVPNID:(NSString *)vpnID
 {
     NSString *key = [[vpnID lastPathComponent] stringByAppendingString:@"_secret"];
+    if (!key)
+    {
+        return;
+    }
     [self.keyChain setString:secret forKey:key];
 }
 
