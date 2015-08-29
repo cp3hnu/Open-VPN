@@ -66,8 +66,6 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
         
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:indicatorView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:switchCtrl attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:indicatorView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:switchCtrl attribute:NSLayoutAttributeRight multiplier:1 constant:-3]];
-        
-        
     }
     
     return self;
@@ -94,12 +92,12 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
         imageView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:imageView];
         
-        [imageView addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:52]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
         
-        [imageView addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:52]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[imageView]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageView)]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[imageView]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageView)]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[imageView(==50)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageView)]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[imageView(==50)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageView)]];
     }
     
     return self;
@@ -153,8 +151,6 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    //NSLog(@"viewWillAppear");
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -169,6 +165,7 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - NCWidgetProviding
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
     // Perform any setup necessary in order to update the view.
     
@@ -184,6 +181,7 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
     return UIEdgeInsetsZero;
 }
 
+#pragma mark - Property
 - (NSString *)selectedID
 {
     return [[NSUserDefaults standardUserDefaults] stringForKey:kSelectedVPNID];
@@ -274,8 +272,6 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSLog(@"Highlight");
-    
     if ([VPNManager sharedInstance].status == NEVPNStatusConnecting || [VPNManager sharedInstance].status == NEVPNStatusConnected ||
         [VPNManager sharedInstance].status == NEVPNStatusReasserting)
     {
@@ -287,8 +283,6 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSLog(@"Select");
-    
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == self.vpns.count)
