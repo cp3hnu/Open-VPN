@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		354AC6761B93461200EF4FA0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 955BF6201B1FEC9500C1F5CD /* Images.xcassets */; };
 		3585BBB21B91A38100B6DCCA /* TextFieldTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3585BBB11B91A38100B6DCCA /* TextFieldTableCell.m */; };
 		9508E0871B292C6600E572D6 /* VPN.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508E0821B292C6600E572D6 /* VPN.m */; };
 		9508E0881B292C6600E572D6 /* VPN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9508E0831B292C6600E572D6 /* VPN.xcdatamodeld */; };
@@ -46,7 +47,6 @@
 		95C8BEB41B214E8300CE6430 /* UICKeyChainStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 95C8BEB21B214E8300CE6430 /* UICKeyChainStore.h */; };
 		95C8BEB51B214E8300CE6430 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C8BEB31B214E8300CE6430 /* UICKeyChainStore.m */; };
 		95FF538E1B329DF400068915 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 955BF6201B1FEC9500C1F5CD /* Images.xcassets */; };
-		95FF53901B329E1700068915 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95FF538F1B329E1700068915 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,7 +165,6 @@
 		95C8BEA11B214AB600CE6430 /* VPNKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VPNKitTests.m; sourceTree = "<group>"; };
 		95C8BEB21B214E8300CE6430 /* UICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICKeyChainStore.h; sourceTree = "<group>"; };
 		95C8BEB31B214E8300CE6430 /* UICKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICKeyChainStore.m; sourceTree = "<group>"; };
-		95FF538F1B329E1700068915 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,7 +253,6 @@
 				952070F71B2E65A90025BAB5 /* VPN Widget.entitlements */,
 				952070E91B2E62DD0025BAB5 /* TodayViewController.h */,
 				952070EA1B2E62DD0025BAB5 /* TodayViewController.m */,
-				95FF538F1B329E1700068915 /* Images.xcassets */,
 				952070E71B2E62DD0025BAB5 /* Supporting Files */,
 			);
 			path = "VPN Widget";
@@ -592,7 +590,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95FF53901B329E1700068915 /* Images.xcassets in Resources */,
+				354AC6761B93461200EF4FA0 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

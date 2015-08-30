@@ -1,6 +1,6 @@
 # VPN
 
-#这个工程的目的是为了方便快速地配置、打开、关闭VPN，使用iOS 8新引入的NetworkExtension库
+#这个工程的目的是为了快速地配置、打开、关闭VPN，使用iOS 8新引入的NetworkExtension库
 
 ##Screenshot 
 ![](Demo.gif)
