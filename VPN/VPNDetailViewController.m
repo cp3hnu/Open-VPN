@@ -389,34 +389,6 @@
                 break;
         }
     }
-    else
-    {
-        switch (index) {
-            case 1:
-                textField.text = @"101.78.195.61";
-                break;
-                
-            case 2:
-                textField.text = @"cp3hnu";
-                break;
-                
-            case 3:
-                textField.text = @"22ec7965a";
-                break;
-                
-            case 4:
-                textField.text = @"vpn";
-                break;
-                
-            case 5:
-                textField.text = @"vpn.psk";
-                break;
-                
-            default:
-                
-                break;
-        }
-    }
     
     return cell;
 }

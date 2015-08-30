@@ -61,7 +61,7 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
         self.titleLabel = label;
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[label]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(label)]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[switchCtrl]-5-[label]-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(switchCtrl, label)]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[switchCtrl]-5-[label]-10-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(switchCtrl, label)]];
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:switchCtrl attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
         
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:indicatorView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:switchCtrl attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
@@ -94,9 +94,7 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
         
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
         
-        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
-        
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[imageView(==50)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageView)]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[imageView(==50)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageView)]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[imageView(==50)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageView)]];
     }
     
@@ -127,7 +125,7 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
     self.preferredContentSize = CGSizeMake(0, NormalHeight);
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(80, 80);
+    layout.itemSize = CGSizeMake(80, 10+31+5+17+10);
     layout.minimumLineSpacing = 10;
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
