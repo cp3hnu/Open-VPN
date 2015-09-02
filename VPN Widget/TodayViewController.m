@@ -92,9 +92,9 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
         imageView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:imageView];
         
-        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:3]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[imageView(==50)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageView)]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[imageView(==50)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageView)]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[imageView(==50)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageView)]];
     }
     
