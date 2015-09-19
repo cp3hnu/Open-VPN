@@ -270,10 +270,13 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([VPNManager sharedInstance].status == NEVPNStatusConnecting || [VPNManager sharedInstance].status == NEVPNStatusConnected ||
-        [VPNManager sharedInstance].status == NEVPNStatusReasserting)
+    if (indexPath.row < self.vpns.count)
     {
-        [[VPNManager sharedInstance] disConnect];
+        if ([VPNManager sharedInstance].status == NEVPNStatusConnecting || [VPNManager sharedInstance].status == NEVPNStatusConnected ||
+            [VPNManager sharedInstance].status == NEVPNStatusReasserting)
+        {
+            [[VPNManager sharedInstance] disConnect];
+        }
     }
     
     return YES;
