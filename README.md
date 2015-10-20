@@ -19,7 +19,7 @@
 + Keychain Sharing
 + App Groups
 
-##3rd Library
+##3rd Party Library
 * [VPNKeyChainWrapper](https://github.com/kishikawakatsumi/UICKeyChainStore)
 
 ##Requirements
