@@ -87,7 +87,6 @@ static NSString * const kAppGroupIdentifier = @"group.com.zte.VPN";
     }];
 }
 
-
 - (void)connectVPN:(VPN *)vpn titlePrefix:(NSString *)prefix reload:(BOOL)reload
 {
     NEVPNProtocolIPSec *p = [[NEVPNProtocolIPSec alloc] init];
@@ -151,6 +150,7 @@ static NSString * const kAppGroupIdentifier = @"group.com.zte.VPN";
                     [self loadFromPreferencesWithCompletionHandler:^(NSError *error) {
                         if (!error)
                         {
+                            //reload = NO，避免死循环
                             [self connectVPN:vpn titlePrefix:prefix reload:NO];
                         }
                     }];
