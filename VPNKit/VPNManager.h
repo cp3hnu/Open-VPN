@@ -7,17 +7,17 @@
 //
 
 @import NetworkExtension;
-#import <Foundation/Foundation.h>
+@import Foundation;
 @class VPN;
 
 extern NSString * const kConnectVPNErrorNofitication;
-extern NSString * const kSaveVPNErrorNofitication;
 
 @interface VPNManager : NSObject
 
 @property (nonatomic, assign, readonly) NEVPNStatus status;
 
 + (VPNManager *)sharedInstance;
+
 /**
  * loads the current VPN configuration from the caller's VPN preferences
  * @see NEVPNManager
