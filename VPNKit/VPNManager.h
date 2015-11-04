@@ -18,16 +18,33 @@ extern NSString * const kSaveVPNErrorNofitication;
 @property (nonatomic, assign, readonly) NEVPNStatus status;
 
 + (VPNManager *)sharedInstance;
-- (void)loadFromPreferencesWithCompletionHandler:(void(^)())completionHandler;
-- (void)removeFromPreferences;
-- (void)connectVPN:(VPN *)vpn titlePrefix:(NSString *)prefix;
+/**
+ * loads the current VPN configuration from the caller's VPN preferences
+ * @see NEVPNManager
+ **/
+- (void)loadFromPreferencesWithCompletionHandler:(void(^)(NSError *error))completionHandler;
+
+/**
+ * removes the VPN configuration from the caller's VPN preferences
+ * @see NEVPNManager
+ **/
+- (void)removeFromPreferencesWithCompletionHandler:(void(^)(NSError *error))completionHandler;
+
+/**
+ * 连接VPN
+ * @param prefix VPN标题前缀，区分App与Extension
+ * @param reload 避免死循环，外部调用reload = YES
+ **/
+- (void)connectVPN:(VPN *)vpn titlePrefix:(NSString *)prefix reload:(BOOL)reload;
+
+/**
+ * 断开VPN连接
+ **/
 - (void)disConnect;
 
 //UserDefault
 - (void)setObject:(id)object forKey:(id)key;
 - (NSString *)stringForKey:(NSString *)key;
 - (void)removeObjectForKey:(NSString *)key;
-
-
 
 @end

@@ -302,14 +302,14 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
         
         if (![vpn.VPNID isEqualToString:self.selectedID])
         {
-            [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:@"Widget"];
+            [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:@"Widget" reload:YES];
             self.selectedID = vpn.VPNID;
         }
         else
         {
             if ([VPNManager sharedInstance].status == NEVPNStatusInvalid || [VPNManager sharedInstance].status == NEVPNStatusDisconnected)
             {
-                [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:@"Widget"];
+                [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:@"Widget" reload:YES];
             }
         }
     }

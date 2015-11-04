@@ -115,7 +115,7 @@ static NSString * const kSubtitleTableCellReuseIdentifier = @"subtitleTableCell"
             {
                 if (sender.on)
                 {
-                    [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:nil];
+                    [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:nil reload:YES];
                 }
                 else
                 {
