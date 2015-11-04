@@ -163,6 +163,11 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - NCWidgetProviding
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
     // Perform any setup necessary in order to update the view.
@@ -288,6 +293,7 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
     
     if (indexPath.row == self.vpns.count)
     {
+        //[[VPNManager sharedInstance] removeFromPreferences];
         [self.extensionContext openURL:[NSURL URLWithString:@"ztevpn://"] completionHandler:nil];
     }
     else

@@ -63,6 +63,11 @@ static NSString * const kSubtitleTableCellReuseIdentifier = @"subtitleTableCell"
                                              selector:@selector(vpnStatusDidChange:)
                                                  name:NEVPNStatusDidChangeNotification
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(failedToConnetVPN:)
+                                                 name:kConnectVPNErrorNofitication
+                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -161,6 +166,19 @@ static NSString * const kSubtitleTableCellReuseIdentifier = @"subtitleTableCell"
     }
     
     [self.tableView reloadData];
+}
+
+- (void)failedToConnetVPN:(NSNotification *)notification
+{
+    NSLog(@"Failed to connet VPN error = %@", notification.userInfo);
+    
+    self.VPNStatus = @"未连接";
+    self.isConnected = NO;
+    
+    [self.tableView reloadData];
+    
+    //iOS 9第一次saveToPreferences安装VPN到设备之后回到App，需要再调用loadFromPreferences，加载VPN设置
+    [[VPNManager sharedInstance] loadFromPreferencesWithCompletionHandler:nil];
 }
 
 #pragma mark - TableView Managerment

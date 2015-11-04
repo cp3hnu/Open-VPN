@@ -10,13 +10,20 @@
 #import "VPN.h"
 #import "VPNKeyChainWrapper.h"
 #import "VPN+OnDemandRules.h"
+#import "UIDevice+Type.h"
+
+
+NSString * const kConnectVPNErrorNofitication = @"Connect_VPN_Error_Nofitication";
+NSString * const kSaveVPNErrorNofitication = @"Save_VPN_Error_Nofitication";
+
+typedef void(^CompletionHandler)();
 
 static NSString * const kAppGroupIdentifier = @"group.com.zte.VPN";
 
 @interface VPNManager ()
 
-@property (nonatomic, strong) NEVPNManager   *manager;
-@property (nonatomic, strong) NSUserDefaults *userDefault;
+@property (nonatomic, strong) NEVPNManager      *manager;
+@property (nonatomic, strong) NSUserDefaults    *userDefault;
 
 @end
 
@@ -40,14 +47,7 @@ static NSString * const kAppGroupIdentifier = @"group.com.zte.VPN";
     if (self)
     {
         _manager = [NEVPNManager sharedManager];
-        [_manager loadFromPreferencesWithCompletionHandler:^(NSError *error) {
-            if (error)
-            {
-                NSLog(@"Failed to load preferences: %@", error);
-            }
-        }];
-        _manager.localizedDescription = @"VPN";
-        _manager.enabled = YES;
+        [self loadFromPreferencesWithCompletionHandler:nil];
         
         _userDefault = [[NSUserDefaults alloc] initWithSuiteName:kAppGroupIdentifier];
     }
@@ -59,7 +59,31 @@ static NSString * const kAppGroupIdentifier = @"group.com.zte.VPN";
     return self.manager.connection.status;
 }
 
-- (void)connectVPN:(VPN *)vpn titlePrefix:(NSString *)prefix;
+- (void)loadFromPreferencesWithCompletionHandler:(void(^)())completionHandler
+{
+    [self.manager loadFromPreferencesWithCompletionHandler:^(NSError *error) {
+        if (error)
+        {
+            NSLog(@"Failed to load preferences: %@", error);
+        }
+        else if (completionHandler)
+        {
+            completionHandler();
+        }
+    }];
+}
+
+- (void)removeFromPreferences
+{
+    [self.manager removeFromPreferencesWithCompletionHandler:^(NSError *error) {
+        if (error)
+        {
+            NSLog(@"Failed to load preferences: %@", error);
+        }
+    }];
+}
+
+- (void)connectVPN:(VPN *)vpn titlePrefix:(NSString *)prefix
 {
     NEVPNProtocolIPSec *p = [[NEVPNProtocolIPSec alloc] init];
     p.username = vpn.account;
@@ -71,16 +95,25 @@ static NSString * const kAppGroupIdentifier = @"group.com.zte.VPN";
     p.useExtendedAuthentication = YES;
     p.disconnectOnSleep = [vpn.disconnectOnSleep boolValue];
     
-    [self.manager setEnabled:YES];
-    [self.manager setProtocol:p];
-    
-    if (![vpn.isOnDemand boolValue])
+    //iOS 9使用protocolConfiguration，代替protocol
+    if ([[UIDevice currentDevice] isGEVersion:@"9"])
     {
-        [self.manager setOnDemandEnabled:NO];
+        self.manager.protocolConfiguration = p;
     }
     else
     {
-        [self.manager setOnDemandEnabled:YES];
+        self.manager.protocol = p;
+    }
+    
+    self.manager.enabled = YES;
+    
+    if (![vpn.isOnDemand boolValue])
+    {
+        self.manager.onDemandEnabled = NO;
+    }
+    else
+    {
+        self.manager.onDemandEnabled = YES;
         NEEvaluateConnectionRule *connectRule = [[NEEvaluateConnectionRule alloc] initWithMatchDomains:[vpn onDemandRules] andAction:NEEvaluateConnectionRuleActionConnectIfNeeded];
         NEOnDemandRuleEvaluateConnection *rule = [NEOnDemandRuleEvaluateConnection new];
         rule.connectionRules = @[connectRule];
@@ -98,12 +131,24 @@ static NSString * const kAppGroupIdentifier = @"group.com.zte.VPN";
         description = [NSString stringWithFormat:@"%@-%@", displayName, vpn.title];
     }
     
-    [self.manager setLocalizedDescription:description];
+    self.manager.localizedDescription = description;
     
     [self.manager saveToPreferencesWithCompletionHandler:^(NSError *error) {
         if (error)
         {
             NSLog(@"SaveToPreferences error: %@", error);
+            
+            //如果错误是NEVPNErrorConfigurationStale，重新load
+            //Worry: 会不会死循环
+            if ([error.domain isEqualToString:NEVPNErrorDomain] && error.code == NEVPNErrorConfigurationStale)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self loadFromPreferencesWithCompletionHandler:^{
+                        [self connectVPN:vpn titlePrefix:prefix];
+                    }];
+                });
+            }
         }
         else
         {
@@ -113,6 +158,15 @@ static NSString * const kAppGroupIdentifier = @"group.com.zte.VPN";
             if (startError)
             {
                 NSLog(@"StartVPNTunnel error: %@", startError);
+                NSDictionary *dict = @{
+                                       @"error" : startError,
+                                       };
+                
+                if ([[UIDevice currentDevice] isGEVersion:@"9"])
+                {
+                    //iOS 9第一次连接VPN时，会提示安装VPN到设备，startVPNTunnel会调用失败，但是没有NEVPNStatusDidChangeNotification通知消息，需要手动发送失败消息，更改界面展示，例如Turn off UISwitch.
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kConnectVPNErrorNofitication object:nil userInfo:dict];
+                }
             }
         }
     }];

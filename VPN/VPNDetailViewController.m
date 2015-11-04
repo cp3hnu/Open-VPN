@@ -36,7 +36,14 @@
     
     _labelTextArray = @[@"描述", @"服务器", @"账户", @"密码", @"群组名称", @"密钥"];
     
-    self.title = @"添加配置";
+    if (self.vpn)
+    {
+        self.title = self.vpn.title;
+    }
+    else
+    {
+        self.title = @"添加配置";
+    }
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"存储" style:UIBarButtonItemStyleDone target:self action:@selector(saveNewVPN)];
     if (!self.vpn)

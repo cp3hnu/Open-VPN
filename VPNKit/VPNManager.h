@@ -10,11 +10,16 @@
 #import <Foundation/Foundation.h>
 @class VPN;
 
+extern NSString * const kConnectVPNErrorNofitication;
+extern NSString * const kSaveVPNErrorNofitication;
+
 @interface VPNManager : NSObject
 
 @property (nonatomic, assign, readonly) NEVPNStatus status;
 
 + (VPNManager *)sharedInstance;
+- (void)loadFromPreferencesWithCompletionHandler:(void(^)())completionHandler;
+- (void)removeFromPreferences;
 - (void)connectVPN:(VPN *)vpn titlePrefix:(NSString *)prefix;
 - (void)disConnect;
 
