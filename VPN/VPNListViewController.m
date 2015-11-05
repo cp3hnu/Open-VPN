@@ -59,6 +59,9 @@ static NSString * const kSubtitleTableCellReuseIdentifier = @"subtitleTableCell"
     self.tableView.estimatedRowHeight = 44;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 53, 0, 0);
     
+    //加载VPN的配置
+    [[VPNManager sharedInstance] loadFromPreferencesWithCompletionHandler:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(vpnStatusDidChange:)
                                                  name:NEVPNStatusDidChangeNotification

@@ -23,12 +23,10 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
     self.vpnListCtrler =
     [[VPNListViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
-    //尽早监控VPN状态
-    [[VPNManager sharedInstance] loadFromPreferencesWithCompletionHandler:nil];
-
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:self.vpnListCtrler];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
