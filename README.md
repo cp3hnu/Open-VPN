@@ -1,6 +1,8 @@
 # VPN
 
-# 这个工程的目的是为了快速地配置、打开、关闭VPN，使用iOS 8新引入的NetworkExtension库
+**方便用户快速地配置、打开以及关闭VPN，使用iOS 8 [Network Extension Framework](https://developer.apple.com/library/ios/documentation/NetworkExtension/Reference/Network_Extension_Framework_Reference/index.html#//apple_ref/doc/uid/TP40016234)。**
+
+**Note:** 这个不是VPN服务器，也没有提供VPN账号。只是方便用户使用VPN服务。
 
 ## Screenshot
 
@@ -37,4 +39,3 @@
 ## Requirements
 
 iOS 8.0+
-
