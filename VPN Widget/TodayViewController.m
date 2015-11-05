@@ -117,6 +117,8 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [[VPNManager sharedInstance] loadFromPreferencesWithCompletionHandler:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(vpnStatusDidChange:)
                                                  name:NEVPNStatusDidChangeNotification
@@ -273,27 +275,12 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
     }
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row < self.vpns.count)
-    {
-        if ([VPNManager sharedInstance].status == NEVPNStatusConnecting || [VPNManager sharedInstance].status == NEVPNStatusConnected ||
-            [VPNManager sharedInstance].status == NEVPNStatusReasserting)
-        {
-            [[VPNManager sharedInstance] disConnect];
-        }
-    }
-    
-    return YES;
-}
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == self.vpns.count)
     {
-        //[[VPNManager sharedInstance] removeFromPreferences];
         [self.extensionContext openURL:[NSURL URLWithString:@"ztevpn://"] completionHandler:nil];
     }
     else
@@ -302,14 +289,29 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
         
         if (![vpn.VPNID isEqualToString:self.selectedID])
         {
-            [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:@"Widget" reload:YES];
+            //如已经连上其它VPN，先断开连接
+            if ([VPNManager sharedInstance].status == NEVPNStatusConnecting ||
+                [VPNManager sharedInstance].status == NEVPNStatusConnected  ||
+                [VPNManager sharedInstance].status == NEVPNStatusReasserting)
+            {
+                [[VPNManager sharedInstance] disConnect];
+            }
+            
+            [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:@"Widget"];
             self.selectedID = vpn.VPNID;
         }
         else
         {
-            if ([VPNManager sharedInstance].status == NEVPNStatusInvalid || [VPNManager sharedInstance].status == NEVPNStatusDisconnected)
+            if ([VPNManager sharedInstance].status == NEVPNStatusConnecting ||
+                [VPNManager sharedInstance].status == NEVPNStatusConnected  ||
+                [VPNManager sharedInstance].status == NEVPNStatusReasserting)
             {
-                [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:@"Widget" reload:YES];
+                [[VPNManager sharedInstance] disConnect];
+            }
+            else if ([VPNManager sharedInstance].status == NEVPNStatusInvalid ||
+                [VPNManager sharedInstance].status == NEVPNStatusDisconnected)
+            {
+                [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:@"Widget"];
             }
         }
     }

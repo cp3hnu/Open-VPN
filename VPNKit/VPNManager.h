@@ -33,9 +33,8 @@ extern NSString * const kConnectVPNErrorNofitication;
 /**
  * 连接VPN
  * @param prefix VPN标题前缀，区分App与Extension
- * @param reload 当saveToPreferences失败时，调用一次loadFromPreferences，同时避免死循环。外部调用reload = YES
  **/
-- (void)connectVPN:(VPN *)vpn titlePrefix:(NSString *)prefix reload:(BOOL)reload;
+- (void)connectVPN:(VPN *)vpn titlePrefix:(NSString *)prefix;
 
 /**
  * 断开VPN连接

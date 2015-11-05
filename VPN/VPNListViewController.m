@@ -115,7 +115,7 @@ static NSString * const kSubtitleTableCellReuseIdentifier = @"subtitleTableCell"
             {
                 if (sender.on)
                 {
-                    [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:nil reload:YES];
+                    [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:nil];
                 }
                 else
                 {
@@ -170,9 +170,6 @@ static NSString * const kSubtitleTableCellReuseIdentifier = @"subtitleTableCell"
 
 - (void)vpnConnectedError:(NSNotification *)notification
 {
-    NSError *error = (NSError *)notification.userInfo;
-    NSLog(@"Failed to connet VPN error = %@", error);
-    
     self.VPNStatus = @"未连接";
     self.isConnected = NO;
     
