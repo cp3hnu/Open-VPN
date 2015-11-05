@@ -65,7 +65,7 @@ static NSString * const kSubtitleTableCellReuseIdentifier = @"subtitleTableCell"
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(failedToConnetVPN:)
+                                             selector:@selector(vpnConnectedError:)
                                                  name:kConnectVPNErrorNofitication
                                                object:nil];
 }
@@ -168,9 +168,10 @@ static NSString * const kSubtitleTableCellReuseIdentifier = @"subtitleTableCell"
     [self.tableView reloadData];
 }
 
-- (void)failedToConnetVPN:(NSNotification *)notification
+- (void)vpnConnectedError:(NSNotification *)notification
 {
-    NSLog(@"Failed to connet VPN error = %@", notification.userInfo);
+    NSError *error = (NSError *)notification.userInfo;
+    NSLog(@"Failed to connet VPN error = %@", error);
     
     self.VPNStatus = @"未连接";
     self.isConnected = NO;

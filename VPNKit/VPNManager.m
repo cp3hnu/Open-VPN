@@ -12,9 +12,7 @@
 #import "VPN+OnDemandRules.h"
 #import "UIDevice+Type.h"
 
-
 NSString * const kConnectVPNErrorNofitication = @"Connect_VPN_Error_Nofitication";
-NSString * const kSaveVPNErrorNofitication = @"Save_VPN_Error_Nofitication";
 
 static NSString * const kAppGroupIdentifier = @"group.com.zte.VPN";
 
