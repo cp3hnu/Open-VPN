@@ -10,8 +10,6 @@
 @import Foundation;
 @class VPN;
 
-extern NSString * const kConnectVPNErrorNofitication;
-
 @interface VPNManager : NSObject
 
 @property (nonatomic, assign, readonly) NEVPNStatus status;
@@ -34,7 +32,7 @@ extern NSString * const kConnectVPNErrorNofitication;
  * 连接VPN
  * @param prefix VPN标题前缀，区分App与Extension
  **/
-- (void)connectVPN:(VPN *)vpn titlePrefix:(NSString *)prefix;
+- (void)connectVPN:(VPN *)vpn titlePrefix:(NSString *)prefix completionHandler:(void(^)(NSError *error))completionHandler;
 
 /**
  * 断开VPN连接

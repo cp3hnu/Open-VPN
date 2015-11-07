@@ -297,7 +297,7 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
                 [[VPNManager sharedInstance] disConnect];
             }
             
-            [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:@"Widget"];
+            [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:@"Widget" completionHandler:nil];
             self.selectedID = vpn.VPNID;
         }
         else
@@ -311,7 +311,7 @@ static NSString * const AddCellReuseIdentifier = @"AddCell";
             else if ([VPNManager sharedInstance].status == NEVPNStatusInvalid ||
                 [VPNManager sharedInstance].status == NEVPNStatusDisconnected)
             {
-                [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:@"Widget"];
+                [[VPNManager sharedInstance] connectVPN:vpn titlePrefix:@"Widget" completionHandler:nil];
             }
         }
     }

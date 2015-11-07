@@ -12,8 +12,6 @@
 #import "VPN+OnDemandRules.h"
 #import "UIDevice+Type.h"
 
-NSString * const kConnectVPNErrorNofitication = @"Connect_VPN_Error_Nofitication";
-
 static NSString * const kAppGroupIdentifier = @"group.com.zte.VPN";
 
 @interface VPNManager ()
@@ -84,21 +82,26 @@ static NSString * const kAppGroupIdentifier = @"group.com.zte.VPN";
     }];
 }
 
-- (void)connectVPN:(VPN *)vpn titlePrefix:(NSString *)prefix
+- (void)connectVPN:(VPN *)vpn titlePrefix:(NSString *)prefix completionHandler:(void(^)(NSError *error))completionHandler
 {
-    [self.manager loadFromPreferencesWithCompletionHandler:^(NSError * _Nullable error) {
+    [self.manager loadFromPreferencesWithCompletionHandler:^(NSError *error) {
         if (error)
         {
             NSLog(@"LoadFromPreferences error: %@", error);
+
+            if (completionHandler)
+            {
+                completionHandler(error);
+            }
         }
         else
         {
-            [self saveAndStartVPNTunnel:vpn titlePrefix:prefix];
+            [self saveAndStartVPNTunnel:vpn titlePrefix:prefix completionHandler:completionHandler];
         }
     }];
 }
 
-- (void)saveAndStartVPNTunnel:(VPN *)vpn titlePrefix:(NSString *)prefix
+- (void)saveAndStartVPNTunnel:(VPN *)vpn titlePrefix:(NSString *)prefix completionHandler:(void(^)(NSError *error))completionHandler
 {
     NEVPNProtocolIPSec *p = [[NEVPNProtocolIPSec alloc] init];
     p.authenticationMethod = NEVPNIKEAuthenticationMethodSharedSecret;
@@ -151,6 +154,11 @@ static NSString * const kAppGroupIdentifier = @"group.com.zte.VPN";
         if (error)
         {
             NSLog(@"SaveToPreferences error: %@", error);
+        
+            if (completionHandler)
+            {
+                completionHandler(error);
+            }
         }
         else
         {
@@ -161,10 +169,24 @@ static NSString * const kAppGroupIdentifier = @"group.com.zte.VPN";
             {
                 NSLog(@"StartVPNTunnel error: %@", startError);
                 
-                if ([[UIDevice currentDevice] isGEVersion:@"9"])
+                //iOS 9第一次saveToPreferences安装VPN到设备之后回到App，需要再调用loadFromPreferences，加载VPN设置
+                if (startError.domain == NEVPNErrorDomain && startError.code == NEVPNErrorConfigurationInvalid)
                 {
-                    //iOS 9第一次连接VPN时，会提示安装VPN到设备，startVPNTunnel会调用失败，但是没有NEVPNStatusDidChangeNotification通知消息，需要手动发送失败消息，更改界面展示，例如Turn off UISwitch.
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kConnectVPNErrorNofitication object:nil userInfo:@{@"error" : startError}];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[VPNManager sharedInstance] loadFromPreferencesWithCompletionHandler:nil];
+                    });
+                }
+                
+                if (completionHandler)
+                {
+                    completionHandler(startError);
+                }
+            }
+            else
+            {
+                if (completionHandler)
+                {
+                    completionHandler(nil);
                 }
             }
         }
