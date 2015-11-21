@@ -110,22 +110,6 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
                 textField.text = vpnDetail.secretKey
             }
         }
-        else {
-            switch (index) {
-            case 0:
-                textField.text = "ZTE VPN"
-            case 1:
-                textField.text = "cloud.zte.com.cn"
-            case 2:
-                textField.text = "10143827"
-            case 3:
-                textField.text = "zwPsq2012"
-            case 4:
-                textField.text = ""
-            default:
-                textField.text = "123456"
-            }
-        }
         
         return cell
     }
