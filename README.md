@@ -1,4 +1,4 @@
-# VPN
+# Open-VPN
 
 **方便用户快速地配置、打开以及关闭VPN，使用iOS 8 [Network Extension Framework](https://developer.apple.com/library/ios/documentation/NetworkExtension/Reference/Network_Extension_Framework_Reference/index.html#//apple_ref/doc/uid/TP40016234)。**
 
