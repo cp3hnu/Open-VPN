@@ -44,24 +44,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Saves changes in the application's managed object context before the application terminates.
         VPNDataManager.sharedInstance.saveContext()
     }
-    
 
+    // MARK: - Open URL
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         
         let naviCtrler = self.window!.rootViewController as! UINavigationController
+        naviCtrler.popToRootViewControllerAnimated(false)
+        
         let listCtrler = naviCtrler.topViewController as! VPNListViewController
         
-        if listCtrler.presentedViewController != nil {
-            listCtrler.dismissViewControllerAnimated(false, completion: {
+        if naviCtrler.presentedViewController != nil {
+            naviCtrler.dismissViewControllerAnimated(false, completion: {
                 listCtrler.addVPNItem()
             })
-        }
-        else
-        {
+        } else {
             listCtrler.addVPNItem()
         }
         
         return true
+    }
+    
+    // MARK: - Handoff
+    func application(application: UIApplication, willContinueUserActivityWithType userActivityType: String) -> Bool {
+        return true
+    }
+    
+    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+        
+        if let userInfo = userActivity.userInfo {
+            if let version = userInfo[ActivityVersionKey] as? String where version == ActivityVersionValue {
+                
+                let naviCtrler = self.window!.rootViewController as! UINavigationController
+                naviCtrler.popToRootViewControllerAnimated(false)
+                
+                let listCtrler = naviCtrler.topViewController as! VPNListViewController
+                listCtrler.restoreUserActivityState(userActivity)
+                
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    func application(application: UIApplication, didFailToContinueUserActivityWithType userActivityType: String, error: NSError) {
+        
+        if error.code != NSUserCancelledError {
+            let message = "The connection to your other device may have been interrupted. Please try again. \(error.localizedDescription)"
+            let alertView = UIAlertView(title: "Handoff Error", message:
+                message, delegate: nil, cancelButtonTitle: "Dismiss")
+            alertView.show()
+        }
+    }
+    
+    func application(application: UIApplication, didUpdateUserActivity userActivity: NSUserActivity) {
+        userActivity.addUserInfoEntriesFromDictionary([ActivityVersionKey: ActivityVersionValue])
     }
 }
 

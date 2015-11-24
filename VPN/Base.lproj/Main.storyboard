@@ -26,6 +26,26 @@
             </objects>
             <point key="canvasLocation" x="2108" y="437"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="DCe-t4-GKH">
+            <objects>
+                <tableViewController storyboardIdentifier="VPNDetailVC" id="eZM-s9-GXp" customClass="VPNDetailViewController" customModule="VPN" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="afu-Qg-WUn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="eZM-s9-GXp" id="nRw-gv-En2"/>
+                            <outlet property="delegate" destination="eZM-s9-GXp" id="Uqs-g9-tP1"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uxe-1f-F7B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2126" y="1188"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="DD2-Hk-4Ux">
             <objects>

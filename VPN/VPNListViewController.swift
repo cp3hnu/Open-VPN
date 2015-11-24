@@ -8,6 +8,7 @@
 
 import UIKit
 import NetworkExtension
+import CoreData
 
 let kConnectIdentifier = "connectIdentifier"
 let kVpnsIdentifier = "vpnsIdentifier"
@@ -42,7 +43,7 @@ class VPNListViewController: UITableViewController {
         super.viewDidLoad()
         
         self.title = "VPN"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "添加", style: .Plain, target: self, action: "addVPNItem")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "添加", style: .Plain, target: self, action: "rightBarButtonAction")
         
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -51,15 +52,18 @@ class VPNListViewController: UITableViewController {
         self.tableView.registerClass(ConnetTableViewCell.self, forCellReuseIdentifier: kConnectIdentifier)
         self.tableView.registerClass(ListTableViewCell.self, forCellReuseIdentifier: kVpnsIdentifier)
         
+        self.vpns.removeAll()
+        self.vpns = VPNDataManager.sharedInstance.fetchAllVPNs()
+        
         VPNManager.sharedInstance.loadFromPreferencesWithCompletionHandler()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "vpnStatusDidChange:", name: NEVPNStatusDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "vpnsDidSave:", name: NSManagedObjectContextDidSaveNotification, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.vpns.removeAll()
-        self.vpns += VPNDataManager.sharedInstance.fetchAllVPNs()
         self.tableView.reloadData()
     }
     
@@ -73,10 +77,16 @@ class VPNListViewController: UITableViewController {
     }
     
     //MARK: - Custom Methods
-    func addVPNItem() {
-        let controller = VPNDetailViewController(style: .Grouped)
+    func addVPNItem(userInfo: [NSObject : AnyObject]? = nil) {
+
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("VPNDetailVC") as! VPNDetailViewController
+        controller.activityUserInfo = userInfo
         
-        self.presentViewController(UINavigationController(rootViewController: controller), animated: true, completion: nil)
+        self.navigationController?.presentViewController(UINavigationController(rootViewController: controller), animated: true, completion: nil)
+    }
+    
+    func rightBarButtonAction() {
+        addVPNItem()
     }
     
     func toggleVPNConnection(sender: UISwitch) {
@@ -111,7 +121,14 @@ class VPNListViewController: UITableViewController {
         }
     }
     
+    // MARK: - NSNotification
     func vpnStatusDidChange(notification: NSNotification) {
+        self.tableView.reloadData()
+    }
+    
+    func vpnsDidSave(notification: NSNotification) {
+        self.vpns.removeAll()
+        self.vpns = VPNDataManager.sharedInstance.fetchAllVPNs()
         self.tableView.reloadData()
     }
 
@@ -196,7 +213,7 @@ class VPNListViewController: UITableViewController {
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         
         let vpn = self.vpns[indexPath.row]
-        let controller = VPNDetailViewController(style: .Grouped)
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("VPNDetailVC") as! VPNDetailViewController
         controller.vpn = vpn
         self.navigationController?.pushViewController(controller, animated: true)
     }
@@ -245,13 +262,26 @@ class VPNListViewController: UITableViewController {
             }
         }
         
-        VPNDataManager.sharedInstance.deleteVPN(vpn)
-        
         self.tableView.beginUpdates()
         self.vpns.removeAtIndex(indexPath.row)
         self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
         self.tableView.endUpdates()
-        
         self.tableView.reloadData()
+        
+        VPNDataManager.sharedInstance.deleteVPN(vpn)
+    }
+    
+    // MARK: - Handoff
+    override func restoreUserActivityState(activity: NSUserActivity) {
+        
+        let naviCtrler = self.navigationController!
+        
+        if naviCtrler.presentedViewController != nil {
+            naviCtrler.dismissViewControllerAnimated(false, completion: {
+                self.addVPNItem(activity.userInfo)
+            })
+        } else {
+             addVPNItem(activity.userInfo)
+        }
     }
 }

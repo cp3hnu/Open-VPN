@@ -50,6 +50,7 @@
 		35CF79D61BE5023D00FBFBD6 /* VPNDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF79D41BE5023D00FBFBD6 /* VPNDataManager.swift */; };
 		35E9270C1BE9010000968424 /* VPNListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9270B1BE9010000968424 /* VPNListViewController.swift */; };
 		35E9270E1BE9012600968424 /* VPNDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9270D1BE9012600968424 /* VPNDetailViewController.swift */; };
+		35F469B21C01F47900E0F4A4 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F469B11C01F47900E0F4A4 /* Define.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +166,7 @@
 		35CF79D41BE5023D00FBFBD6 /* VPNDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNDataManager.swift; sourceTree = "<group>"; };
 		35E9270B1BE9010000968424 /* VPNListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNListViewController.swift; sourceTree = "<group>"; };
 		35E9270D1BE9012600968424 /* VPNDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNDetailViewController.swift; sourceTree = "<group>"; };
+		35F469B11C01F47900E0F4A4 /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +304,7 @@
 			children = (
 				35CF79B91BE4E1F700FBFBD6 /* VPN.entitlements */,
 				355371BA1BEB9FDC00994816 /* TableViewCell */,
+				35F469B11C01F47900E0F4A4 /* Define.swift */,
 				35CF79491BE4CD0400FBFBD6 /* AppDelegate.swift */,
 				35E9270B1BE9010000968424 /* VPNListViewController.swift */,
 				35E9270D1BE9012600968424 /* VPNDetailViewController.swift */,
@@ -653,6 +656,7 @@
 				35CF794A1BE4CD0400FBFBD6 /* AppDelegate.swift in Sources */,
 				35E9270E1BE9012600968424 /* VPNDetailViewController.swift in Sources */,
 				351011BA1BEEEED200E5AAEF /* ConnetTableViewCell.swift in Sources */,
+				35F469B21C01F47900E0F4A4 /* Define.swift in Sources */,
 				3520360A1BE7A0010039EA27 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

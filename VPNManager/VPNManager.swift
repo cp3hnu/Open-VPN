@@ -94,8 +94,7 @@ class VPNManager: NSObject {
         ipsec.passwordReference = VPNKeyChainManager.sharedInstance.passwordForVPNID(vpn.VPNID)
         ipsec.sharedSecretReference = VPNKeyChainManager.sharedInstance.secretForVPNID(vpn.VPNID)
         
-        if #available(iOS 9.0, *)
-        {
+        if #available(iOS 9.0, *) {
             manager.protocolConfiguration = ipsec
         } else {
             manager.`protocol` = ipsec

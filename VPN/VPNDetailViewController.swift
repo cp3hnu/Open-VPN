@@ -13,14 +13,55 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
 
     let ruleViewHeight: CGFloat = 160.0
     var vpn: VPN?
+    var activityUserInfo : [NSObject : AnyObject]?
     var descriptions = ["描述", "服务器", "账户", "密码", "群组名称", "密钥"]
     var cells = [UITableViewCell]()
     var ruleLabel: UILabel!
     var ruleTextView: UITextView!
     var ruleView: UIView!
+    
+    var vpnTitle: String {
+        let textField = textFieldInCellAtIndex(0)
+        return textField.text ?? ""
+    }
+    
+    var server: String {
+        let textField = textFieldInCellAtIndex(1)
+        return textField.text ?? ""
+    }
+    
+    var account: String {
+        let textField = textFieldInCellAtIndex(2)
+        return textField.text ?? ""
+    }
+    
+    var password: String {
+        let textField = textFieldInCellAtIndex(3)
+        return textField.text ?? ""
+    }
+    
+    var groupName: String {
+        let textField = textFieldInCellAtIndex(4)
+        return textField.text ?? ""
+    }
+    
+    var secret: String {
+        let textField = textFieldInCellAtIndex(5)
+        return textField.text ?? ""
+    }
+    
+    var rule: String {
+        return self.ruleTextView.text ?? ""
+    }
+
     var isOnDemand: Bool {
         let switchCtrl = switchInCellAtIndex(7)
         return switchCtrl.on
+    }
+
+    var disconnectOnSleep: Bool {
+        let switchCtrl = switchInCellAtIndex(6)
+        return !switchCtrl.on
     }
     
     override func viewDidLoad() {
@@ -51,6 +92,8 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44
+        
+        startUserActivity()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -63,6 +106,10 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        self.view.endEditing(true)
+        
+        stopUserActivity()
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -80,7 +127,7 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
         textField.delegate = self
         label.text = descriptions[index]
         
-        if index >= 0 && index <= 2 {
+        if index >= 0 && index <= 2 || index == 5 {
             textField.placeholder = "必填"
         } else if index == 3 {
             textField.placeholder = "每次均询问"
@@ -94,7 +141,7 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
             textField.returnKeyType = .Done
         }
         
-        if let vpnDetail = vpn {
+        if let vpnDetail = self.vpn {
             switch (index) {
             case 0:
                 textField.text = vpnDetail.title
@@ -108,6 +155,21 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
                 textField.text = vpnDetail.groupName
             default:
                 textField.text = vpnDetail.secretKey
+            }
+        } else if let dict = self.activityUserInfo {
+            switch (index) {
+            case 0:
+                textField.text = dict[ActivityTitleKey] as? String
+            case 1:
+                textField.text = dict[ActivityServerKey] as? String
+            case 2:
+                textField.text = dict[ActivityAccountKey] as? String
+            case 3:
+                textField.text = dict[ActivityPasswordKey] as? String
+            case 4:
+                textField.text = dict[ActivityGroupNameKey] as? String
+            default:
+                textField.text = dict[ActivitySecretKey] as? String
             }
         }
         
@@ -125,12 +187,18 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
             label.text = "锁屏时保持连接"
             if let vpnItem = self.vpn {
                 switchControl.on = !vpnItem.disconnectOnSleep
+            } else if let dict = self.activityUserInfo {
+                switchControl.on = !(dict[ActivityDisconnectOnSleepKey] as! Bool)
             }
+            
+            switchControl.addTarget(self, action: "toggleDisconnectOnSleep", forControlEvents: .ValueChanged)
         } else {
             label.text = "按需连接"
             switchControl.on = false
             if let vpnItem = self.vpn {
                 switchControl.on = vpnItem.isOnDemand
+            } else if let dict = self.activityUserInfo {
+                switchControl.on = dict[ActivityOnDemandKey] as! Bool
             }
             
             switchControl.addTarget(self, action: "toggleOnDemand:", forControlEvents: .ValueChanged)
@@ -181,6 +249,8 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
         ruleTextView = textView
         if let vpnItem = self.vpn {
             ruleTextView.text = vpnItem.rule
+        }  else if let dict = self.activityUserInfo {
+            ruleTextView.text = dict[ActivityRuleKey] as? String
         }
         
         ruleView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-space-[label]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["space": space], views: ["label": ruleLabel]))
@@ -191,6 +261,26 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
             constraint.priority = UILayoutPriorityDefaultLow
         }
         ruleView.addConstraints(constraints)
+    }
+    
+    func makePropertyChange() {
+        if self.vpn != nil && self.navigationItem.rightBarButtonItem!.enabled == false {
+            enableRightBarButtonItem()
+        }
+    }
+    
+    func enableRightBarButtonItem() {
+        
+        let titleField = textFieldInCellAtIndex(0)
+        let serverField = textFieldInCellAtIndex(1)
+        let accountField = textFieldInCellAtIndex(2)
+        
+        if let title = titleField.text, let server = serverField.text, let account = accountField.text where !title.isEmpty && !server.isEmpty && !account.isEmpty {
+            self.navigationItem.rightBarButtonItem!.enabled = true
+            
+        } else {
+            self.navigationItem.rightBarButtonItem!.enabled = false
+        }
     }
     
     // MARK: - Button Action
@@ -209,48 +299,23 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
             }
         }
         
-        var textField = textFieldInCellAtIndex(0)
-        let title = textField.text
-        
-        textField = textFieldInCellAtIndex(1)
-        let server = textField.text
-        
-        textField = textFieldInCellAtIndex(2)
-        let account = textField.text
-        
-        textField = textFieldInCellAtIndex(3)
-        let password = textField.text ?? ""
-        
-        textField = textFieldInCellAtIndex(4)
-        let groupName = textField.text ?? ""
-        
-        textField = textFieldInCellAtIndex(5)
-        let secret = textField.text ?? ""
-        
-        var switchCtrl = switchInCellAtIndex(6)
-        let disconnectOnSleep = !switchCtrl.on
-        
-        switchCtrl = switchInCellAtIndex(7)
-        let isOnDemand = switchCtrl.on
-        
-        var rule = self.ruleTextView.text ?? ""
-        rule = rule.stringByTrimmingCharactersInSet(VPN.separatorCharacterSet())
-        
         var isNewItem = false
         if self.vpn == nil {
             isNewItem = true
             self.vpn = VPNDataManager.sharedInstance.insertVPN()
         }
         
-        self.vpn!.title = title
-        self.vpn!.server = server
-        self.vpn!.account = account
-        self.vpn!.password = password
-        self.vpn!.secretKey = secret
-        self.vpn!.groupName = groupName
-        self.vpn!.disconnectOnSleep = disconnectOnSleep
-        self.vpn!.isOnDemand = isOnDemand
-        self.vpn!.rule = rule
+        let trimmedRule = self.rule.stringByTrimmingCharactersInSet(VPN.separatorCharacterSet())
+        
+        self.vpn!.title = self.vpnTitle
+        self.vpn!.server = self.server
+        self.vpn!.account = self.account
+        self.vpn!.password = self.password
+        self.vpn!.secretKey = self.secret
+        self.vpn!.groupName = self.groupName
+        self.vpn!.disconnectOnSleep = self.disconnectOnSleep
+        self.vpn!.isOnDemand = self.isOnDemand
+        self.vpn!.rule = trimmedRule
         
         VPNDataManager.sharedInstance.saveContext()
         
@@ -270,7 +335,14 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
         }
     }
     
+    func toggleDisconnectOnSleep() {
+        userActivity?.needsSave = true
+        makePropertyChange()
+    }
+    
     func toggleOnDemand(sender: UISwitch) {
+        userActivity?.needsSave = true
+        makePropertyChange()
         
         self.tableView.reloadData()
         
@@ -282,7 +354,40 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
             }
         }
     }
-
+    
+    // MARK: - Handoff
+    func userInfoDict() -> [NSObject : AnyObject] {
+        return [
+            ActivityTitleKey: self.vpnTitle,
+            ActivityServerKey: self.server,
+            ActivityAccountKey: self.account,
+            ActivityPasswordKey: self.password,
+            ActivityGroupNameKey: self.groupName,
+            ActivitySecretKey: self.secret,
+            ActivityDisconnectOnSleepKey: self.disconnectOnSleep,
+            ActivityOnDemandKey: self.isOnDemand,
+            ActivityRuleKey: self.rule
+        ]
+    }
+    
+    func startUserActivity() {
+        
+        let activity = NSUserActivity(activityType: ActivityTypeAdd)
+        activity.title = "Add VPN Item"
+        activity.userInfo = userInfoDict()
+        self.userActivity = activity
+        self.userActivity?.becomeCurrent()
+    }
+    
+    func stopUserActivity() {
+        self.userActivity?.invalidate()
+    }
+    
+    override func updateUserActivityState(activity: NSUserActivity) {
+        activity.addUserInfoEntriesFromDictionary(userInfoDict())
+        super.updateUserActivityState(activity)
+    }
+    
     // MARK: - UITableView Manager
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
@@ -364,17 +469,8 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
     }
     
     func textFieldTextDidChanged(notification: NSNotification) {
-        
-        let titleField = textFieldInCellAtIndex(0)
-        let serverField = textFieldInCellAtIndex(1)
-        let accountField = textFieldInCellAtIndex(2)
-        
-        if let title = titleField.text, let server = serverField.text, let account = accountField.text where !title.isEmpty && !server.isEmpty && !account.isEmpty {
-            self.navigationItem.rightBarButtonItem!.enabled = true
-            
-        } else {
-            self.navigationItem.rightBarButtonItem!.enabled = false
-        }
+        userActivity?.needsSave = true
+        enableRightBarButtonItem()
     }
 
     // MARK: - UITextViewDelegate
@@ -384,6 +480,11 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
             let rect = textView.convertRect(textView.bounds, toView: self.tableView)
             self.tableView.scrollRectToVisible(rect, animated: true)
         }
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        userActivity?.needsSave = true
+        makePropertyChange()
     }
 
     // MARK: - Notification

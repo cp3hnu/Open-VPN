@@ -8,14 +8,13 @@
 
 import UIKit
 
-let kKeyChainService = "VPNKeyChainService"
-let kKeyChainAccessGroup = "5M6234DYMA.com.zte.VPN"
+let kKeyChainService = "com.zte.vpn"
 
 public class VPNKeyChainManager: NSObject {
     
     public static let sharedInstance = VPNKeyChainManager()
     
-    private let keyChain = Keychain(service: kKeyChainService, accessGroup: kKeyChainAccessGroup)
+    private let keyChain = Keychain(service: kKeyChainService)
     
     public func setPassword(password: String, forVPNID vpnID: String) {
         
