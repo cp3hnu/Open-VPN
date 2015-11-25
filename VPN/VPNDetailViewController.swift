@@ -336,12 +336,12 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
     }
     
     func toggleDisconnectOnSleep() {
-        userActivity?.needsSave = true
+        self.userActivity?.needsSave = true
         makePropertyChange()
     }
     
     func toggleOnDemand(sender: UISwitch) {
-        userActivity?.needsSave = true
+        self.userActivity?.needsSave = true
         makePropertyChange()
         
         self.tableView.reloadData()
@@ -469,7 +469,7 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
     }
     
     func textFieldTextDidChanged(notification: NSNotification) {
-        userActivity?.needsSave = true
+        self.userActivity?.needsSave = true
         enableRightBarButtonItem()
     }
 
@@ -483,7 +483,7 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
     }
     
     func textViewDidChange(textView: UITextView) {
-        userActivity?.needsSave = true
+        self.userActivity?.needsSave = true
         makePropertyChange()
     }
 
