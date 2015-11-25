@@ -14,7 +14,7 @@
 2.  支持IPSec
 3.  支持按需打开VPN
 4.  支持Today Widget
-5.  支持[Handoff](./Doc/Handoff.md)
+5.  支持[Handoff](Document/Handoff/#handoff)
 
 ## Build
 
