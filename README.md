@@ -14,6 +14,7 @@
 2.  支持IPSec
 3.  支持按需打开VPN
 4.  支持Today Widget
+5.  支持[Handoff](./Doc/Handoff.md)
 
 ## Build
 
@@ -29,12 +30,14 @@
 
 ## Version
 
+**V2.1.0**
+
+1.  支持Handoff
+
 ##### V2.0.0
 
 1.  用**Swift 2.0** 实现
 2.  支持iPad
-
-
 
 ##### V1.1.0
 

@@ -15,16 +15,11 @@
 ## 前提条件
 
 -   以相同的iCloud账号登录
-    
 -   蓝牙LE 4.0
-    
 -   iOS 8.0+
-    
 -   相同的Developer Team Identifier
-    
 -   支持指定的Activity Type
-    
-    ​
+
 
 ## Steps
 
@@ -51,22 +46,6 @@ func startUserActivity() {
 #### 2. Update user activity
 
 ``` swift
-func startUserActivity() { 
-    let activity = NSUserActivity(activityType: ActivityTypeAdd)
-    activity.title = "Add VPN Item"
-    activity.userInfo = [key: value]
-    self.userActivity = activity
-    self.userActivity?.becomeCurrent()
-}
-```
-
-``` swift
-
-​```
-
-#### 2. Update user activity
-
-​``` swift
 func textFieldTextDidChanged(notification: NSNotification) {
 	self.userActivity?.needsSave = true
 }
