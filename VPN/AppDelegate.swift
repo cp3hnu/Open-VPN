@@ -71,6 +71,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
         
+        guard userActivity.activityType == ActivityTypeAdd else { return false }
+        
         if let userInfo = userActivity.userInfo {
             if let version = userInfo[ActivityVersionKey] as? String where version == ActivityVersionValue {
                 

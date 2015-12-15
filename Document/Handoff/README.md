@@ -1,33 +1,36 @@
 # Handoff
 
-## Snapshots
+### Snapshots
 
-#### Originating App(iPad)
+##### Originating App (iPad)
 
 ![iPad](Snapshot_1.png "Originating App")
 
 
 
-#### Continuing App(iPhone)
+##### Continuing App (iPhone)
 
 ![iPhone](Snapshot_2.png "Continuing App")                    ![iPhone](Snapshot_3.png "Continuing App")
 
-## 前提条件
+
+
+## Prerequisites
 
 -   以相同的iCloud账号登录
 -   蓝牙LE 4.0
 -   iOS 8.0+
--   相同的Developer Team Identifier
+-   相同的Developer Team ID
 -   支持指定的Activity Type
-
 
 ## Steps
 
 ### 一、添加支持的Activity Type类型
 
-在**info.plist**文件里添加**NSUserActivityTypes** item，如
+在**info.plist**文件里添加**NSUserActivityTypes**，如
 
-![](Handoff.png)
+![](ActivityType.png)
+
+
 
 ### 二、Originating App
 
@@ -58,7 +61,7 @@ override func updateUserActivityState(activity: NSUserActivity) {
 }
 ```
 
-#### 3. Invalidate user activity
+#### 3. Stop user activity
 
 ``` swift
 func stopUserActivity() {
@@ -66,9 +69,19 @@ func stopUserActivity() {
 }
 ```
 
+#### 4. Versioning (Optional)
+
+``` swift
+func application(application: UIApplication, didUpdateUserActivity userActivity: NSUserActivity) {
+    userActivity.addUserInfoEntriesFromDictionary([versionKey: versionValue])
+}
+```
+
+
+
 ### 三、Continuing App
 
-#### 4. Receive user activity
+#### 5. Receive user activity
 
 ``` swift
 func application(application: UIApplication, willContinueUserActivityWithType userActivityType: String) -> Bool {
@@ -81,7 +94,7 @@ func application(application: UIApplication, continueUserActivity userActivity: 
 }
 ```
 
-#### 5. Restore user activity
+#### 6. Restore user activity
 
 ``` swift
 override func restoreUserActivityState(activity: NSUserActivity) {
@@ -90,13 +103,7 @@ override func restoreUserActivityState(activity: NSUserActivity) {
 }
 ```
 
-#### 6. Versioning
 
-``` swift
-func application(application: UIApplication, didUpdateUserActivity userActivity: NSUserActivity) {
-    userActivity.addUserInfoEntriesFromDictionary([versionKey: versionValue])
-}
-```
 
 ## References
 

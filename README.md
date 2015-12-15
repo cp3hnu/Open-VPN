@@ -12,9 +12,10 @@
 
 1.  界面简洁
 2.  支持IPSec
-3.  支持按需打开VPN
+3.  支持On Demand连接
 4.  支持Today Widget
-5.  支持[Handoff](Document/Handoff/#handoff)
+5.  支持Slider Over和Split View
+6.  支持[Handoff](Document/Handoff/#handoff)
 
 ## Build
 
@@ -24,7 +25,7 @@
 +   Keychain Sharing
 +   App Groups
 
-## 3rd Party Library
+## Third-Party Library
 
 *   [UICKeyChainStore](https://github.com/kishikawakatsumi/UICKeyChainStore)
 
@@ -32,12 +33,12 @@
 
 **V2.1.0**
 
-1.  支持Handoff
+1.  支持**Handoff**
 
 ##### V2.0.0
 
 1.  用**Swift 2.0** 实现
-2.  支持iPad
+2.  支持**iPad**，支持**Slide Over**和**Split View**
 
 ##### V1.1.0
 

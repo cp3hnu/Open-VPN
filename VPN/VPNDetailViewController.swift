@@ -102,6 +102,10 @@ class VPNDetailViewController: UITableViewController, UITextFieldDelegate, UITex
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldTextDidChanged:", name: UITextFieldTextDidChangeNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "preferredContentSizeChanged:", name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        
+        if self.activityUserInfo != nil {
+            enableRightBarButtonItem()
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {

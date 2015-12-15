@@ -55,7 +55,7 @@ class VPNListViewController: UITableViewController {
         self.vpns.removeAll()
         self.vpns = VPNDataManager.sharedInstance.fetchAllVPNs()
         
-        VPNManager.sharedInstance.loadFromPreferencesWithCompletionHandler()
+        VPNManager.sharedInstance.loadVPNPreferences()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "vpnStatusDidChange:", name: NEVPNStatusDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "vpnsDidSave:", name: NSManagedObjectContextDidSaveNotification, object: nil)
@@ -77,7 +77,7 @@ class VPNListViewController: UITableViewController {
     }
     
     //MARK: - Custom Methods
-    func addVPNItem(userInfo: [NSObject : AnyObject]? = nil) {
+    func addVPNItem(animated animated: Bool = true, userInfo: [NSObject : AnyObject]? = nil) {
 
         let controller = self.storyboard?.instantiateViewControllerWithIdentifier("VPNDetailVC") as! VPNDetailViewController
         controller.activityUserInfo = userInfo
@@ -95,18 +95,18 @@ class VPNListViewController: UITableViewController {
             if sender.on {
                 for vpn in self.vpns {
                     if  vpn.VPNID == vpnID {
-                            VPNManager.sharedInstance.connectVPN(vpn, titlePrefix: nil, completionHandler: { (error: NSError?) -> Void in
+                        VPNManager.sharedInstance.connectVPN(vpn, titlePrefix: nil) { (error: NSError?) -> Void in
+                            
+                            if let connectError = error where connectError.domain == NEVPNErrorDomain && connectError.code == NEVPNError.ConfigurationReadWriteFailed.rawValue {
                                 
-                                if let connectError = error where connectError.domain == NEVPNErrorDomain && connectError.code == NEVPNError.ConfigurationReadWriteFailed.rawValue {
-                                    
-                                    self.tableView.reloadData()
-                                    
-                                    let controller = UIAlertController(title: "连接失败", message: "请点击\"Allow\"，成功添加VPN配置后，才能连接VPN", preferredStyle: .Alert)
-                                    let action = UIAlertAction(title: "确定", style: .Cancel, handler: nil)
-                                    controller.addAction(action)
-                                    self.presentViewController(controller, animated: true, completion: nil)
-                                }//error
-                            })
+                                self.tableView.reloadData()
+                                
+                                let controller = UIAlertController(title: "连接失败", message: "请点击\"Allow\"，成功添加VPN配置后，才能连接VPN", preferredStyle: .Alert)
+                                let action = UIAlertAction(title: "确定", style: .Cancel, handler: nil)
+                                controller.addAction(action)
+                                self.presentViewController(controller, animated: true, completion: nil)
+                            }//error
+                        }
                         break
                     } //vpnID
                 } //for
@@ -278,10 +278,10 @@ class VPNListViewController: UITableViewController {
         
         if naviCtrler.presentedViewController != nil {
             naviCtrler.dismissViewControllerAnimated(false, completion: {
-                self.addVPNItem(activity.userInfo)
+                self.addVPNItem(animated: false, userInfo: activity.userInfo)
             })
         } else {
-             addVPNItem(activity.userInfo)
+             addVPNItem(animated:false, userInfo: activity.userInfo)
         }
     }
 }

@@ -34,8 +34,10 @@ class VPNDataManager: NSObject {
         
         let storeURL = self.directoryURL.URLByAppendingPathComponent(kSqliteFileName)
         let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+        //let storeOptions = [NSPersistentStoreUbiquitousContentNameKey: "VPNCloudStore"]
         do {
-            try persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL:storeURL, options: nil)
+            let store = try persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL:storeURL, options: nil)
+            //print(store.URL)
         } catch let error as NSError {
             print("CoreData add persistent store coordinator error = \(error)")
         }

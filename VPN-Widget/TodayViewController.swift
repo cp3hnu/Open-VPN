@@ -25,9 +25,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
         
-        NSLog("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ viewDidLoad")
-        
-        VPNManager.sharedInstance.loadFromPreferencesWithCompletionHandler()
+        VPNManager.sharedInstance.loadVPNPreferences()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "vpnStatusDidChange:", name: NEVPNStatusDidChangeNotification, object: nil)
         
@@ -57,13 +55,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        NSLog("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ viewDidAppear")
-        
         self.preferredContentSize = CGSizeMake(0, self.collectionView.contentSize.height)
     }
     
     deinit {
-        NSLog("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ deinit")
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
