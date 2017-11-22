@@ -56,6 +56,7 @@ func textFieldTextDidChanged(notification: NSNotification) {
 
 ``` swift
 override func updateUserActivityState(activity: NSUserActivity) {
+  // called，activity.userinfo is clear
 	activity.addUserInfoEntriesFromDictionary([key: value])
 	super.updateUserActivityState(activity)
 }
@@ -85,12 +86,22 @@ func application(application: UIApplication, didUpdateUserActivity userActivity:
 
 ``` swift
 func application(application: UIApplication, willContinueUserActivityWithType userActivityType: String) -> Bool {
-    return true
+    return false
 }
 
 func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
     let controller = ...
     controller.restoreUserActivityState(userActivity)
+  	or 
+  	restorationHandler(controller)
+  	return true
+}
+
+func application(application: UIApplication, didFailToContinueUserActivityWithType userActivityType: String, error: NSError) {
+    if error.code != NSUserCancelledError {
+        let alert = ...
+        alert.show()
+    }
 }
 ```
 
